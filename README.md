@@ -19,23 +19,44 @@
 
 #### Background
 
-`Berisikan uraian masalah yang diberikan secara umum, dan solusi yang diharapkan seperti apa.`
+Github adalah sebuah platform berbasis cloud yang digunakan oleh developer untuk menyimpan, mengelola dan mengontrol perubahan dari sebuah codebase, serta memfasilitasi developer untuk melakukan perubahan code secara kolaboratif. Terhitung lebih dari 100 juta developer di seluruh dunia menggunakan Github untuk mendukung pekerjaan mereka setiap harinya. Tidak heran jika Github memiliki ukuran total dataset yang sangat besar, hingga 3TB. 
+
+Kita akan mengimplementasikan proses ELT (Extraction, Loading dan Transformation) pada dataset github di link [gharchives](https://www.gharchive.org/), alih-alih menggunakan dataset github yang sudah tersedia di [github BigQuery public dataset](https://console.cloud.google.com/marketplace/product/github/github-repos). Mengingat dataset github ini memiliki ukuran sangat besar, siswa hanya perlu memproses data selama setidaknya 2-5 hari (bebas dimulai sejak tanggal berapa).
+
+Ada 2 hal yang dapat dipelajari oleh siswa, pertama dari sisi data engineering. Pada sisi Data Engineering, proses ELT pada dataset Github ini cukup menantang karena potensi ukuran data yang diproses > 1 GB setiap jamnya! Dengan ukuran data yang besar, seorang Data Engineer harus menentukan solusi yang lebih efisien pada tiap fase ELT. 
+
+Kedua, dari sisi Data Analysis. Dengan melakukan analisis dan eksplorasi lebih dalam pada dataset github, siswa bisa memahami bagaimana melakukan query yang cost-efisien pada data besar. 
+
 
 #### Expected Deliverable
 
-`Bersikan list ekspektasi hasil yang dicapai secara umum, misal bisa menyelesaikan Feature A, B, dan C.`
+Di akhir project, diharapkan siswa dapat membuat sebuah scheduled batch data pipeline (ELT), analisis dan visualisasi pada dashboard yang memiliki metrics antara lain: 
+1. 10 top programming languages
+2. Geographic distribution (country) of developers and their behaviors 
+3. The distribution of specific events
+4. 10 top developers who gave more stars
+5. 10 most active organizations (count by number of PR submitted)
 
 #### Success Criteria
 
-`Sukses kriteria adalah penpaian dengan matris yang  kongkrit, contoh: menylesaikan fitur A dengan testing coverate 80%, implementati Trunk Base Development, Implementasi Code Quality, Implmentasi CI/CD, dan lain-lain.`
+Kriteria sukses/tidak project ini adalah, ketika hasil akhir memiliki: 
+- Implementasi airflow/google cloud composer untuk workflow management: ingest data, transform data dengan airflow
+- Implementasi PostgreSQL/BigQuery sebagai datawarehouse
+- Implementasi dbt untuk proses transformasi data (implementasi data model sederhana)
+- Implementasi metabase/google looker sebagai media visualisasi
+- Step by step penjelasan tentang bagaimana cara me-replikasi project tersebut
+
+Nice to have: 
+- Implementasi CI/CD
+- Test and data validation
 
 #### Documentation
 
-`Jika ada dokumentasi tambahan yang diberikan ke Mentees.`
+- [trend dan insight Github Events di tahun 2022](https://ossinsight.io/blog/trends-and-insights-from-github-2022/)
 
 #### Assest
 
-`Jika ada file atau asset pendukung yang diberikan ke Mentees.`
+- [github events dataset](https://www.gharchive.org/)
 
 ## 📆 Schedule Meeting and Format Mentoring
 

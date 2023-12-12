@@ -26,6 +26,7 @@ Kita akan mengimplementasikan proses ELT (Extraction, Loading dan Transformation
 Ada 2 hal yang dapat dipelajari oleh siswa, pertama dari sisi data engineering. Pada sisi Data Engineering, proses ELT pada dataset Github ini cukup menantang karena potensi ukuran data yang diproses > 1 GB setiap jamnya! Dengan ukuran data yang besar, seorang Data Engineer harus menentukan solusi yang lebih efisien pada tiap fase ELT. 
 
 Kedua, dari sisi Data Analysis. Dengan melakukan analisis dan eksplorasi lebih dalam pada dataset github, siswa bisa memahami bagaimana melakukan query yang cost-efisien pada data besar. 
+![image](https://github.com/oktavianidewi/capstone-alta-de-project/assets/1182494/bbdf86f3-d1cf-45d3-8bef-6d9c01067829)
 
 
 #### Expected Deliverable

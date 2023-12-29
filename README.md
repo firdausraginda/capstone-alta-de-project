@@ -29,7 +29,7 @@ Oleh karena itu, sumber informasi yg selama ini tersimpan di source yg berbeda-b
     * 2 CSV file
     * 2 JSON file
     * table `course_enrollment` di postgreSQL DB
-2. Buat table di bigquery, dgn datasetnya masing2, sebagai berikut:
+2. Buat DWH bigquery, yg terdiri dari beberapa table dgn datasetnya masing2, sebagai berikut:
     * dimensional table
         * dwh.dim_student
         * dwh.dim_mentor

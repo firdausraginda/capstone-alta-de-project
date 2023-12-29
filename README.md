@@ -19,45 +19,60 @@
 
 #### Background
 
-Github adalah sebuah platform berbasis cloud yang digunakan oleh developer untuk menyimpan, mengelola dan mengontrol perubahan dari sebuah codebase, serta memfasilitasi developer untuk melakukan perubahan code secara kolaboratif. Terhitung lebih dari 100 juta developer di seluruh dunia menggunakan Github untuk mendukung pekerjaan mereka setiap harinya. Tidak heran jika Github memiliki ukuran total dataset yang sangat besar, hingga 3TB. 
+Sebuah edu-tech "pinter-skuy" menyediakan online course yg diisi oleh mentor profesional dan siapapun bisa mengambil course tsb. Setelah bisnis mulai berjalan, management level ingin melakukan monitoring & evaluasi dari online course mereka.
 
-Kita akan mengimplementasikan proses ELT (Extraction, Loading dan Transformation) pada dataset github di link [gharchives](https://www.gharchive.org/), alih-alih menggunakan dataset github yang sudah tersedia di [github BigQuery public dataset](https://console.cloud.google.com/marketplace/product/github/github-repos). Mengingat dataset github ini memiliki ukuran sangat besar, siswa hanya perlu memproses data selama setidaknya 2-5 hari (bebas dimulai sejak tanggal berapa).
-
-Ada 2 hal yang dapat dipelajari oleh siswa, pertama dari sisi data engineering. Pada sisi Data Engineering, proses ELT pada dataset Github ini cukup menantang karena potensi ukuran data yang diproses > 1 GB setiap jamnya! Dengan ukuran data yang besar, seorang Data Engineer harus menentukan solusi yang lebih efisien pada tiap fase ELT. 
-
-Kedua, dari sisi Data Analysis. Dengan melakukan analisis dan eksplorasi lebih dalam pada dataset github, siswa bisa memahami bagaimana melakukan query yang cost-efisien pada data besar. 
-![image](https://github.com/oktavianidewi/capstone-alta-de-project/assets/1182494/bbdf86f3-d1cf-45d3-8bef-6d9c01067829)
-
+Oleh karena itu, sumber informasi yg selama ini tersimpan di source yg berbeda-beda, ingin dijadikan satu sebagai ***single source of truth***, untuk kemudian dilakukan analisis.
 
 #### Expected Deliverable
 
-Di akhir project, diharapkan siswa dapat membuat sebuah scheduled batch data pipeline (ELT), analisis dan visualisasi pada dashboard yang memiliki metrics antara lain: 
-1. 10 top programming languages
-2. Geographic distribution (country) of developers and their behaviors 
-3. The distribution of specific events
-4. 10 top developers who gave more stars
-5. 10 most active organizations (count by number of PR submitted)
+1. Buat ELT/ETL pipeline yg memproses [data disini](https://github.com/firdausraginda/capstone-alta-de-project/tree/main/data-source). Data source terdiri dari:
+    * 2 CSV file
+    * 2 JSON file
+    * table `course_enrollment` di postgreSQL DB
+2. Buat table di bigquery, dgn datasetnya masing2, sebagai berikut:
+    * dimensional table
+        * dwh.dim_student
+        * dwh.dim_mentor
+        * dwh.dim_category
+    * fact table
+        * dwh.fact_course
+        * dwh.fact_course_enrollment
+    * datamart table
+        * datamart.course_enrollment_summary
+3. Semua BQ table memiliki setup seperti berikut:
+    * write diposition = write_truncate
+    * create disposition = create_if_needed
+4. Buat visualisasi dari data di datamart table, yg mampu menjawab pertanyaan berikut:
+    * berapa jumlah student yg ambil minimal 1 course per `city` student
+    * berapa jumlah student yg mengambil course per `course category type`
+    * top 3 mentor yg course nya paling banyak di ambil
+5. Orchestrate ELT/ETL pipeline yg sudah dibuat menggunakan airflow, dgn job yg jalan `daily`
+
+Note: Jangan push service account teman2 ke github repo, buat `.gitignore` nya
 
 #### Success Criteria
 
 Kriteria sukses/tidak project ini adalah, ketika hasil akhir memiliki: 
-- Implementasi airflow/google cloud composer untuk workflow management: ingest data, transform data dengan airflow
-- Implementasi PostgreSQL/BigQuery sebagai datawarehouse
-- Implementasi dbt untuk proses transformasi data (implementasi data model sederhana)
-- Implementasi metabase/google looker sebagai media visualisasi
-- Step by step penjelasan tentang bagaimana cara me-replikasi project tersebut
+* Berhasil ingest data dari beberapa source ke bigquery
+* Table yg dibuat di bigquery, sesuai dgn requirement & kebutuhan visualisasi
+* Orchestrate ELT/ETL pipeline dgn airflow
+* Berhasil membuat visualisasi yg mampu menjawab pertanyaan di atas
+* Membuat step by step penjelasan tentang bagaimana cara me-replikasi project tersebut
 
-Nice to have: 
-- Implementasi CI/CD
-- Test and data validation
+Nice to have:
+* Deploy airflow ke Google Cloud Composer atau Google Compute Engine
 
 #### Documentation
 
-- [trend dan insight Github Events di tahun 2022](https://ossinsight.io/blog/trends-and-insights-from-github-2022/)
+- [data modelling](https://ossinsight.io/blog/trends-and-insights-from-github-2022/)
+- [connect to postgreSQL DB dgn database.ini](https://www.postgresqltutorial.com/postgresql-python/connect/)
+- [running airflow using docker](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html)
+- [implementation airflow using docker](https://github.com/firdausraginda/basic-airflow/tree/master)
 
 #### Assest
 
-- [github events dataset](https://www.gharchive.org/)
+- silahkan download `data-source` yg ada di repo ini
+![ERD](capstone-project.drawio.png)
 
 ## 📆 Schedule Meeting and Format Mentoring
 

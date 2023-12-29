@@ -33,7 +33,7 @@ Oleh karena itu, sumber informasi yg selama ini tersimpan di source yg berbeda-b
     * dimensional table
         * dwh.dim_student
         * dwh.dim_mentor
-        * dwh.dim_category
+        * dwh.dim_course_category
     * fact table
         * dwh.fact_course
         * dwh.fact_course_enrollment
@@ -66,6 +66,7 @@ Nice to have:
 
 - [data modelling](https://ossinsight.io/blog/trends-and-insights-from-github-2022/)
 - [connect to postgreSQL DB dgn database.ini](https://www.postgresqltutorial.com/postgresql-python/connect/)
+- [pandas dataframe to BQ table](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_gbq.html)
 - [running airflow using docker](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html)
 - [implementation airflow using docker](https://github.com/firdausraginda/basic-airflow/tree/master)
 
